@@ -1,0 +1,323 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-shadow:hover {
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
+  transition: 0.3s;
+}
+
+.text-shadow-static {
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
+}
+
+.banner {
+  background: url("./assets/banner-bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+}
+
+.both {
+  animation: slide-in 0.6s ease-in-out, bouncing 3s infinite;
+}
+
+.show-in {
+  animation: show-in 1s ease-in-out;
+}
+
+.slide-in {
+  animation: slide-in 0.6s ease-in-out;
+}
+
+.bouncing {
+  animation: bouncing 3s infinite;
+}
+
+.bouncing-x:hover {
+  animation: bouncing 3s infinite;
+}
+
+@keyframes slide-in {
+  from {
+    scale: 0.5;
+  } /* Start from bottom of viewport */
+  to {
+    scale: 1;
+  }
+}
+@keyframes show-in {
+  from {
+    opacity: 0;
+  } /* Start from bottom of viewport */
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bouncing {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(20px); /* Adjust movement distance */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.shadow-2 {
+  box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2),
+    inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7),
+    0.5px 0.5px 0px rgba(255, 255, 255, 1), 0.5px 0.5px 0px rgba(0, 0, 0, 0.15),
+    0 12px 10px -10 rgba(0, 0, 0, 0.1);
+}
+
+.slidebutton::before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  transform-origin: center right;
+  transform: scaleX(0);
+  transition: transform 0.25s ease-in-out;
+}
+
+.slidebutton:hover::before {
+  transform-origin: center left;
+  transform: scaleX(1);
+}
+
+.bubbleButton {
+  z-index: 10;
+}
+
+.bubbleButton::before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  transform-origin: center;
+  transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 0);
+  transition: transform 0.45s ease-in-out;
+}
+
+.bubbleButton:hover::before {
+  transform: translate3d(-50%, -50%, 0) scale3d(15, 15, 15);
+}
+
+.animated-text span::before {
+  content: "";
+  color: #665dc5;
+  animation: words 20s infinite;
+}
+
+.animated-text span::after {
+  content: "";
+  position: absolute;
+  width: calc(100% + 8px);
+  height: 120%;
+  background-color: #121212;
+  border-left: 2px solid #665dc5;
+  right: -8px;
+  animation: cursor 0.8s infinite, typing 20s steps(14) infinite;
+}
+
+@keyframes cursor {
+  to {
+    border-left: 2px solid transparent;
+  }
+}
+
+@keyframes words {
+  0%,
+  20% {
+    content: "Web Dev";
+  }
+  21%,
+  40% {
+    content: "Full-Stack";
+  }
+  41%,
+  60% {
+    content: "Developer";
+  }
+  61%,
+  80% {
+    content: "Designer";
+  }
+  81%,
+  100% {
+    content: "UI/UX";
+  }
+}
+
+@keyframes typing {
+  10%,
+  15%,
+  30%,
+  35%,
+  50%,
+  55%,
+  70%,
+  75%,
+  90%,
+  95% {
+    width: 0;
+  }
+  5%,
+  20%,
+  25%,
+  40%,
+  45%,
+  60%,
+  65%,
+  80%,
+  85% {
+    width: calc(100% + 8px);
+  }
+}
+
+circle {
+  stroke-dasharray: 450;
+  stroke-dashoffset: 450;
+  z-index: 20;
+  animation: anime 3s ease-out forwards;
+}
+
+@keyframes anime {
+  100% {
+    stroke-dashoffset: var(--stroke-dash);
+  }
+}
+
+.card::before,
+.card::after {
+  position: absolute;
+  content: "";
+  width: 20%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: bold;
+
+  transition: all 1s;
+  z-index: 20;
+}
+
+.card::before {
+  top: 0;
+  right: 0;
+  border-radius: 0 15px 0 100%;
+  background-color: rgba(255, 53, 205, 0.6);
+  opacity: 0.2;
+}
+
+.card::after {
+  bottom: 0;
+  left: 0;
+  border-radius: 0 100% 0 15px;
+  background: linear-gradient(
+    45deg,
+    rgba(240, 76, 152, 0.7),
+    rgba(36, 0, 49, 0.775)
+  );
+  opacity: 0.2;
+}
+
+.card:hover::before,
+.card:hover:after {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  transition: all 1s;
+  opacity: 1;
+}
+
+.card:hover::after {
+  content: "";
+}
+
+.gradient-background {
+  background: linear-gradient(120deg, #9f3d79 30%, #472d99);
+  background-size: 140% 140%;
+  animation: gradient-animation 15s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.scrollnone {
+  overflow: auto;
+  /* Hide default scrollbar */
+  scrollbar-width: none; /* Not fully supported yet, but helps */
+}
+
+.scrollnone::-webkit-scrollbar {
+  display: none; /* Hide scrollbar track */
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #ffffff;
+  box-shadow: inset 0 0 20px 20px #ffffff17;
+}
+
+.rs-drawer-content {
+  background-color: #15181ce1 !important ;
+}
+
+button,
+.cursor-pointer {
+  cursor: url("	https://cdn.custom-cursor.com/db/7263/32/material-space-pointer.png"),
+    pointer;
+}
+:root,
+.cursor-default {
+  cursor: url("https://cdn.custom-cursor.com/db/7264/32/material-space-cursor.png"),
+    auto !important;
+}
+
+:root {
+  cursor: url("https://i.ibb.co/s1yQcbf/cursor.png"), text;
+}
+
+::-webkit-scrollbar {
+  width: 12px; /* Adjust width as desired */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #665dc5;
+  border-radius: 2px; /* Add rounded corners */
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #443e84;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(27, 27, 27); /* Change track color */
+}
